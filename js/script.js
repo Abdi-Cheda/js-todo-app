@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', ()=>{
   let todoForm = document.querySelector('form');
   let todoList = document.querySelector('.todo-list');
+  const baseUrl = "https://todo-api-uhue.onrender.com/todos"
 
   const createListItem = (todoObj) => {
     // Create the elements making up a todo item
@@ -32,7 +33,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     todoTitle.addEventListener("click", () => {
       todoTitle.style.textDecoration = "line-through";
 
-      fetch(`http://127.0.0.1:3000/todos/${todoObj.id}`, {
+      fetch(`${baseUrl}${todoObj.id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -49,10 +50,11 @@ document.addEventListener('DOMContentLoaded', ()=>{
   }
 
   // GET - Read
-  fetch('http://127.0.0.1:3000/todos')
+  fetch(baseUrl)
     .then(res => res.json())
     .then(todos => {
-      todos.forEach(todo => {
+      console.log(todos)
+      todos.todos.forEach(todo => {
         console.log(todo);
         createListItem(todo);
       });
@@ -67,7 +69,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
   
     // POST - Create
     // Add todo item to the database
-    fetch('http://127.0.0.1:3000/todos', {
+    fetch(baseUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
