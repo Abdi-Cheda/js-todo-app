@@ -53,8 +53,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
   fetch(baseUrl)
     .then(res => res.json())
     .then(todos => {
-      console.log(todos)
-      todos.todos.forEach(todo => {
+      todos.forEach(todo => {
         console.log(todo);
         createListItem(todo);
       });
