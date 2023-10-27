@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     e.preventDefault();
     let inputElem = document.getElementById('input--add');
 
-    createListItem(inputElem.value);
+    // createListItem(inputElem.value);
   
     // POST - Create
     // Add todo item to the database
